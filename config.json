@@ -1,0 +1,59 @@
+{
+  "gulpTasks": "gulp-tasks",
+  "js": {
+    "lint": ["src/js/*.js", "gulp-tasks/*.js"],
+    "build": ["src/jade-snippets/**/**", "src/templates/*.jade", "src/jade-descriptions/*.jade", "src/jsons/*.json", "src/js/*.js"],
+    "clean": {
+      "src": ["src/generated/**/*.js", "src/generated/**/*.json", "build/js/*.js", "server/public/js/*.js"],
+      "ignore": ""
+    },
+    "minifyJs": {
+      "src": "build/js/app.js",
+      "dest": "build/js/"
+    },
+    "copy": {
+      "src": "build/js/app.js",
+      "dest": "server/public/js/"
+    }
+  },
+  "css": {
+    "sass": {
+      "src": "src/sass",
+      "dest": "build/css"
+    },
+    "copy": {
+      "src": "build/css/style.min.css",
+      "dest": "server/public/css/"
+    },
+    "minify": {
+      "src": "build/css/style.css",
+      "dest": "build/css/"
+    },
+    "clean": {
+      "src": ["build/css/**/*.css", "server/public/css/*.css"],
+      "ignore": ""
+    }
+  },
+  "data": {
+    "jades": "src/jade-snippets/",
+    "jades2render": "src/jade-snippets/",
+    "templates": "src/templates/",
+    "desciptionsJade": "src/jade-descriptions/",
+    "includes": "src/jade-snippets/includes/",
+    "layouts": "src/jade-snippets/layouts/",
+    "jadesObj": "src/generated/js/jades.js",
+    "htmlsObj": "src/generated/js/htmls.js",
+    "templatesObj": "src/generated/js/templates.js",
+    "descriptionsObj": "src/generated/js/descriptions.js",
+    "includesObj": "src/generated/js/includes.js",
+    "layoutsObj": "src/generated/js/layouts.js"
+  },
+  "concatJson": {
+    "src": "src/jsons/",
+    "dest": "src/generated/json/references.json"
+  },
+  "browserify": {
+    "src": "src/js/app.js",
+    "dest": "build/js/"
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "extends": {
+      "title": "extends指令和模板继承（extends & template inheritance）",
+      "description": "extends-inheritance",
+      "jadecode": "page",
+      "layoutcode": "layout",
+      "htmlcode": "page"
+    }
+}

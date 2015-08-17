@@ -1,0 +1,23 @@
+{
+  "plain text": {
+    "title": "纯文本（plain text）",
+    "description": "plain-text",
+    "subSection": [
+      {
+        "title": "管道文本",
+        "description": "plain-text-pipe",
+        "code": "plain-text-pipe"
+      },
+      {
+        "title": "行内文本",
+        "description": "plain-text-inline",
+        "code": "plain-text-inline"
+      },
+      {
+        "title": "块文本",
+        "description": "plain-text-block",
+        "code": "plain-text-block"
+      }
+    ]
+  }
+}

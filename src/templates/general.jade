@@ -1,0 +1,19 @@
+h1= obj.title
+div.description: !{descriptions[obj.description]}
+if obj.code
+  .code-wrap
+    .code-boxes
+      .box.jade(contentEditable='true')
+        pre= jades[obj.code]
+    .code-boxes
+      .box.html!= htmls[obj.code]
+if obj.subSection
+  for section in obj.subSection
+    h2= section.title
+    div.description: !{descriptions[section.description]}
+    .code-wrap
+      .code-boxes
+        .box.jade(contentEditable='true')
+          pre= jades[section.code]
+      .code-boxes
+        .box.html!= htmls[section.code]

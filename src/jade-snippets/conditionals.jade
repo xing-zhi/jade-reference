@@ -1,0 +1,22 @@
+- var user = { description: 'foo bar baz' }
+- var authorised = false
+.user
+  if user.description
+    h2 Description
+    p.description= user.description
+  else if authorised
+    h2 Description
+    p.description.
+      User has no description,
+      why not add one...
+  else
+    h1 Description
+    p.description User has no description
+
+// unless是if取反
+unless user.isAnonymous
+  p You're logged in as #{user.name}
+
+// 上面的unless等价于
+if !user.isAnonymous
+  p You're logged in as #{user.name}

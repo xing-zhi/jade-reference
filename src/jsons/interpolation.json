@@ -1,0 +1,24 @@
+{
+  "interpolation": {
+    "title": "插值（interpolation）",
+    "description": "interpolation",
+    "subSection": [
+      {
+        "title": "转义的字符串插值",
+        "description": "interpolation-escape",
+        "code": "interpolation-escape"
+      },
+      {
+        "title": "不转义的字符串插值",
+        "description": "interpolation-unescape",
+        "code": "interpolation-unescape",
+        "danger": "danger"
+      },
+      {
+        "title": "元素标签插值",
+        "description": "interpolation-tag",
+        "code": "interpolation-tag"
+      }
+    ]
+  }
+}

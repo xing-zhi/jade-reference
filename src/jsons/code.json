@@ -1,0 +1,24 @@
+{
+  "code": {
+    "title": "代码（code）",
+    "description": "code",
+    "subSection": [
+      {
+        "title": "不缓冲的代码",
+        "description": "code-unbuffered",
+        "code": "code-unbuffered"
+      },
+      {
+        "title": "缓冲的代码",
+        "description": "code-buffered",
+        "code": "code-buffered"
+      },
+      {
+        "title": "不转义的缓冲的代码",
+        "description": "code-buffered-unescaped",
+        "code": "code-buffered-unescaped",
+        "danger": "danger"
+      }
+    ]
+  }
+}

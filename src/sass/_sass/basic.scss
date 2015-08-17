@@ -1,0 +1,42 @@
+body {
+    line-height: 1.5;
+    font-family: Tahoma, Arial, 'Hiragino Sans GB', STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin: 0.8em 0;
+}
+
+b {
+    font-weight: bold;
+}
+
+a {
+    color: #589983;
+    text-decoration: none;
+    &:hover {
+        color: #3c6859;
+        text-decoration: underline;
+    }
+}
+
+code {
+    color: #c7254e;
+    background-color: #f9f2f4;
+    padding: 2px 4px;
+    font-size: 90%;
+    white-space: nowrap;
+    border-radius: 4px;
+}

@@ -1,0 +1,24 @@
+- var friends = 10
+case friends
+  when 0
+    p you have no friends
+  when 1
+    p you have a friend
+  default
+    p you have #{friends} friends
+
+// fall through
+- var friends = 0
+case friends
+  when 0
+  when 1
+    p you have very few friends
+  default
+    p you have #{friends} friends
+
+// 块扩展
+- var friends = 1
+case friends
+  when 0: p you have no friends
+  when 1: p you have a friend
+  default: p you have #{friends} friends

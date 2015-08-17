@@ -1,0 +1,16 @@
+//- Declaration
+mixin list
+  ul
+    li foo
+    li bar
+    li baz
+// 不带参数的mixin
++list
+
+mixin pet(name)
+  li.pet= name
+
+// 带参数的mixin
+ul
+  +pet('cat')
+  +pet('dog')

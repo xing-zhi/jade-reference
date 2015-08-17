@@ -1,0 +1,22 @@
+.code-wrap {
+    display: flex;
+    .code-boxes {
+        width: 50%;
+        .box {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid grey;
+            overflow: auto;
+            border-left-width: 5px;
+            border-radius: 5px 0 0 5px;
+            font-family: 'Inconsolata' monospace;
+            font-size: 13px;
+            white-space: pre;
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 1px 1px grey;
+            }
+        }
+    }
+}
+

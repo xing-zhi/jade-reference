@@ -1,0 +1,13 @@
+header {
+    .logo-container {
+        text-align: center;
+        background: url('../imgs/bg.jpg');
+        padding-top: 50px;
+        padding-bottom: 50px;
+        img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+    }
+}

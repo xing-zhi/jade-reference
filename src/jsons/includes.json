@@ -1,0 +1,25 @@
+{
+  "includes": {
+    "title": "includes指令（includes）",
+    "description": "includes",
+    "jadecode": "includes-index",
+    "includescode": ["head.jade", "foot.jade"],
+    "htmlcode": "includes-index",
+    "subSection": [
+      {
+        "title": "包含纯文本文件",
+        "description": "",
+        "jadecode": "includes-plain-text-index",
+        "includescode": ["style.css", "script.js"],
+        "htmlcode": "includes-plain-text-index"
+      },
+      {
+        "title": "包含过滤器文件",
+        "description": "",
+        "jadecode": "includes-filter-index",
+        "includescode": ["article.md"],
+        "htmlcode": "includes-filter-index"
+      }
+    ]
+  }
+}

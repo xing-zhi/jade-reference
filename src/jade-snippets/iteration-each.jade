@@ -1,0 +1,25 @@
+// 对数组进行迭代
+ul
+  for v in [1, 2, 3]
+    li= v
+
+// 对对象进行迭代
+ul
+  for v in {1: 'one', 2: 'two', 3: 'three'}
+    li= v
+
+// 对数组进行迭代，并且获取索引
+ul
+  for v, i in [1, 2, 3]
+    li= i + ': ' + v
+
+// 对对象进行迭代，并且获取属性名
+ul
+  for v, k in {1: 'one', 2: 'two', 3: 'three'}
+    li= k + ': ' + v
+
+// 对值为数组/对象的JavaScript表达式进行迭代
+- var values = [];
+ul
+  each v in values.length ? values : ['There are no values']
+    li= v
