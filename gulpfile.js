@@ -36,13 +36,13 @@ gulp.task('generateJadesObj', function() {
   jades2Obj(cfg.data.jades, cfg.data.jadesObj, 'intact');
 });
 gulp.task('generateHtmlsObj', function() {
-  jades2Obj(cfg.data.jades2render, cfg.data.htmlsObj, 'render', {highlight: true});
+  jades2Obj(cfg.data.jades2render, cfg.data.htmlsObj, 'render');
 });
 gulp.task('generateTemplatesObj', function() {
    jades2Obj(cfg.data.templates, cfg.data.templatesObj, 'intact');
 });
 gulp.task('generateDescriptionsObj', function() {
-  jades2Obj(cfg.data.desciptionsJade, cfg.data.descriptionsObj, 'render', {highlight: false});
+  jades2Obj(cfg.data.desciptionsJade, cfg.data.descriptionsObj, 'render');
 });
 gulp.task('generateLayoutsObj', function() {
    jades2Obj(cfg.data.layouts, cfg.data.layoutsObj, 'intact');

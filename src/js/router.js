@@ -1,13 +1,6 @@
 'use strict';
 
-const jades = require('../generated/js/jades'),
-      htmls = require('../generated/js/htmls'),
-      templates = require('../generated/js/templates'),
-      descriptions = require('../generated/js/descriptions.js'),
-      includes = require('../generated/js/includes.js'),
-      layouts = require('../generated/js/layouts.js'),
-      references = require('../generated/json/references.json'),
-      jade = require('jade');
+const jade = require('jade');
 
 function changeTocStyle(newHash, oldHash) {
   const links = document.querySelectorAll('.toc a');
@@ -24,8 +17,9 @@ function changeTocStyle(newHash, oldHash) {
   });
 }
 
-function changeContent(newHash) {
-  const contentEl = document.querySelector('.content');
+function changeContent(newHash, appData) {
+  const templates = appData.templates,
+        contentEl = document.querySelector('.content');
 
   const templateSet = new Set()
           .add('extends')
@@ -39,22 +33,22 @@ function changeContent(newHash) {
   }
 
   const html = jade.render(template, {
-    obj: JSON.parse(references[newHash]),
-    jades,
-    htmls,
-    descriptions,
-    includes,
-    layouts,
+    obj: JSON.parse(appData.references[newHash]),
+    jades: appData.jades,
+    htmls: appData.htmls,
+    descriptions: appData.descriptions,
+    includes: appData.includes,
+    layouts: appData.layouts,
     doctpe: 'html'
   });
 
   contentEl.innerHTML = html;
 }
 
-module.exports = function router(newHash, oldHash) {
+module.exports = function router(newHash, oldHash, appData) {
   // change toc style
   changeTocStyle(newHash, oldHash);
 
   // change content
-  changeContent(newHash);
+  changeContent(newHash, appData);
 };

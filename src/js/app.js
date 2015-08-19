@@ -1,9 +1,10 @@
 'use strict';
 
-const jade = require('jade'),
-      highlight = require('highlight.js').highlight;
+const jade = require('jade');
 
-const router = require('./router');
+const router = require('./router'),
+      helper = require('./helper'),
+      appData = require('./process-data');
 
 window.addEventListener('DOMContentLoaded', function onLoad() {
   const hash = location.hash.substr(1);
@@ -16,7 +17,7 @@ window.addEventListener('DOMContentLoaded', function onLoad() {
     const oldHash = e.oldURL.replace(/^[^#]*#/, ''),
           newHash = e.newURL.replace(/^[^#]*#/, '');
 
-    router(newHash, oldHash);
+    router(newHash, oldHash, appData);
   });
 
   document.addEventListener('input', function onInput(e) {
@@ -27,6 +28,6 @@ window.addEventListener('DOMContentLoaded', function onLoad() {
             pretty: true
           }).trim();
 
-    htmlContainer.innerHTML = highlight('html', html).value;
+    htmlContainer.innerHTML = helper.highlight(html, 'html');
   });
 });

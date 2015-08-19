@@ -3,19 +3,16 @@
 const path = require('path'),
       fs = require('fs');
 
-const jade = require('jade'),
-      highlight = require('highlight.js').highlight;
+const jade = require('jade');
 
-function render(fileContent, filePath, options) {
-  const html = jade.render(fileContent, {
+function render(fileContent, filePath) {
+  return jade.render(fileContent, {
     debug: false,
     compileDebug: true,
     filename: filePath,
     pretty: true,
     doctype: 'html'
   }).trim();
-
-  return options.highlight ? highlight('html', html).value : html;
 }
 
 function compile(fileContent, filePath) {
@@ -36,7 +33,7 @@ const todosMap = new Map()
         .set('compile', compile)
         .set('intact', intact);
 
-function jades2Obj(views, outFile, todo, options) {
+function jades2Obj(views, outFile, todo) {
   const obj = {};
   const files = fs.readdirSync(views);
 
@@ -46,7 +43,7 @@ function jades2Obj(views, outFile, todo, options) {
             filePath = path.join(views, filename),
             fileContent = fs.readFileSync(filePath, 'utf-8');
 
-      obj[name] = todosMap.get(todo)(fileContent, filePath, options);
+      obj[name] = todosMap.get(todo)(fileContent, filePath);
     }
   });
 
