@@ -70,7 +70,7 @@ gulp.task('build', ['build:css', 'build:js']);
 
 gulp.task('watch:css', ['build:css'], function() {
   $.livereload.listen();
-  gulp.watch(`${cfg.sass.src}/**/*.scss`, ['build:css']);
+  gulp.watch(cfg.css.watch, ['build:css']);
 });
 
 gulp.task('watch:js', ['build:js'], function() {

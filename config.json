@@ -32,7 +32,8 @@
     "clean": {
       "src": ["build/css/**/*.css", "server/public/css/*.css"],
       "ignore": ""
-    }
+    },
+    "watch": "src/sass/**/*.scss"
   },
   "data": {
     "jades": "src/jade-snippets/",
