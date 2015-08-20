@@ -277,9 +277,11 @@ header nav li a {
   padding: 2px 0;
   color: #fff;
   background-color: #a00;
+  transition: background-color 0.5s;
 }
 header nav li a:hover {
   text-decoration: none;
+  background-color: #c00;
   color: #fff;
 }
 
