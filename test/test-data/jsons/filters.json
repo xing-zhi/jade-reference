@@ -1,0 +1,8 @@
+{
+    "filters": {
+      "title": "过滤器（filters）",
+      "description": "filters",
+      "code": "filters",
+      "warning": "warning-filters"
+    }
+}

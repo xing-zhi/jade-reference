@@ -1,0 +1,18 @@
+{
+  "comments": {
+    "title": "注释（comments）",
+    "description": "comments",
+    "subSection": [
+      {
+        "title": "单行注释和块注释",
+        "description": "comments-general",
+        "code": "comments-general"
+      },
+      {
+        "title": "条件注释",
+        "description": "comments-conditional",
+        "code": "comments-conditional"
+      }
+    ]
+  }
+}

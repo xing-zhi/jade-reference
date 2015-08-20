@@ -1,0 +1,24 @@
+{
+  "mixins": {
+    "title": "mixin",
+    "description": "mixins",
+    "code": "mixins",
+    "subSection": [
+      {
+        "title": "mixin块",
+        "description": "mixin-block",
+        "code": "mixin-block"
+      },
+      {
+        "title": "mixin属性",
+        "description": "mixin-attributes",
+        "code": "mixin-attributes"
+      },
+      {
+        "title": "剩余参数",
+        "description": "mixin-rest",
+        "code": "mixin-rest"
+      }
+    ]
+  }
+}

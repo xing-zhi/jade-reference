@@ -1,0 +1,19 @@
+{
+  "tags": {
+    "title": "元素标签（tags）",
+    "description": "tags",
+    "code": "tags",
+    "subSection": [
+      {
+        "title": "块扩展",
+        "description": "tag-expansion",
+        "code": "tag-expansion"
+      },
+      {
+        "title": "自关闭标签",
+        "description": "tag-self-close",
+        "code": "tag-self-close"
+      }
+    ]
+  }
+}

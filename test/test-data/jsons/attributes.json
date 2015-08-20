@@ -1,0 +1,41 @@
+{
+  "attributes": {
+    "title": "元素属性（attributes）",
+    "description": "attributes",
+    "code": "attributes",
+    "subSection": [
+      {
+        "title": "非转义属性",
+        "description": "attribute-unescaped",
+        "code": "attribute-unescaped",
+        "danger": "danger"
+      },
+      {
+        "title": "布尔属性",
+        "description": "attribute-boolean",
+        "code": "attribute-boolean"
+      },
+      {
+        "title": "样式属性",
+        "description": "attribute-style",
+        "code": "attribute-style"
+      },
+      {
+        "title": "类属性",
+        "description": "attribute-class",
+        "code": "attribute-class"
+      },
+      {
+        "title": "类和ID简写",
+        "description": "attribute-shorthand",
+        "code": "attribute-shorthand"
+      },
+      {
+        "title": "&attributes",
+        "description": "attribute-attributes",
+        "code": "attribute-attributes",
+        "danger": "danger"
+      }
+    ]
+  }
+}
