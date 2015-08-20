@@ -34,22 +34,78 @@ const todosMap = new Map()
         .set('intact', intact);
 
 function jades2Obj(views, outFile, todo) {
-  const obj = {};
-  const files = fs.readdirSync(views);
+  function readdir(folderName) {
+    return new Promise(function(res, rej) {
+      fs.readdir(folderName, function(err, filenames) {
+        if ( err ) {
+          rej(err);
+        }
 
-  files.forEach(function file2property(filename) {
-    if ( /.jade$/.test(filename) ) {
+        res(filenames);
+      });
+    });
+  }
+
+  function processFiles(filenames) {
+    const promises = [];
+
+    filenames.forEach(function processFile(filename) {
+      if ( !/.jade$/.test(filename) ) {
+        return ;
+      }
+
       const name = path.basename(filename, '.jade'),
-            filePath = path.join(views, filename),
-            fileContent = fs.readFileSync(filePath, 'utf-8');
+            filePath = path.join(views, filename);
 
-      obj[name] = todosMap.get(todo)(fileContent, filePath);
-    }
-  });
+      const promise = new Promise(function(res, rej) {
+        fs.readFile(filePath, 'utf-8', function(err, content) {
+          if ( err ) {
+            rej(err);
+          }
 
-  const outCome = `module.exports = ${JSON.stringify(obj)};`;
+          const data = todosMap.get(todo)(content, filePath);
 
-  fs.writeFileSync(outFile, outCome);
+          res([name, data]);
+        });
+      });
+
+      promises.push(promise);
+    });
+
+    return Promise.all(promises);
+  }
+
+  function data2module(dataArr) {
+    const obj = dataArr.reduce(function(finalObj, dataItem) {
+      finalObj[dataItem[0]] = dataItem[1];
+
+      return finalObj;
+    }, {});
+
+    const module = `module.exports = ${JSON.stringify(obj)};`;
+
+    return module;
+  }
+
+  function writeFile(filePath, data) {
+    return new Promise(function(res, rej) {
+      fs.writeFile(filePath, data, function(err) {
+        if ( err ) {
+          rej(err);
+        }
+
+        res();
+      });
+    });
+  }
+
+  return readdir(views)
+    .then(processFiles)
+    .then(data2module)
+    .then(function(data) {
+      writeFile(outFile, data);
+    })
+    .catch(console.error);
 }
 
 module.exports = jades2Obj;

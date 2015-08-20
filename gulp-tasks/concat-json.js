@@ -3,24 +3,72 @@
 const fs = require('fs'),
       path = require('path');
 
-function concatJson(filePath, outFile) {
-  const files = fs.readdirSync(filePath);
+function concatJson(folderName, outFile) {
+  function readdir(folderName) {
+    return new Promise(function(res, rej) {
+      fs.readdir(folderName, function(err, filenames) {
+        if ( err ) {
+          rej(err);
+        }
 
-  let json = files.reduce(function file2obj(finalJson, filename) {
-    const file = path.join(filePath, filename);
-    const content = fs.readFileSync(file, 'utf-8');
-    const obj = JSON.parse(content);
+        res(filenames);
+      });
+    });
+  }
 
-    return Object.keys(obj).reduce(function stringify(tmpJson, key) {
-      tmpJson[key] = JSON.stringify(obj[key]);
+  function processFiles(filenames) {
+    const promises = [];
 
-      return tmpJson;
-    }, finalJson);
-  }, {});
+    filenames.forEach(function processFile(filename) {
+      const filePath = path.join(folderName, filename);
 
-  json = JSON.stringify(json);
+      const promise = new Promise(function(res, rej) {
+        fs.readFile(filePath, 'utf-8', function(err, content) {
+          if ( err ) {
+            rej(err);
+          }
 
-  fs.writeFileSync(outFile, json);
+          res(JSON.parse(content));
+        });
+      });
+
+      promises.push(promise);
+    });
+
+    return Promise.all(promises);
+  }
+
+  function data2jsonStr(objArr) {
+    const json =  objArr.reduce(function objs2json(finalJson, obj) {
+      return Object.keys(obj).reduce(function processObj(tmpJson, key) {
+        tmpJson[key] = JSON.stringify(obj[key]);
+
+        return tmpJson;
+      }, finalJson);
+    }, {});
+
+    return JSON.stringify(json);
+  }
+
+  function writeFile(filePath, data) {
+    return new Promise(function(res, rej) {
+      fs.writeFile(filePath, data, function(err) {
+        if ( err ) {
+          rej(err);
+        }
+
+        res();
+      });
+    });
+  }
+
+  return readdir(folderName)
+    .then(processFiles)
+    .then(data2jsonStr)
+    .then(function(data) {
+      writeFile(outFile, data);
+    })
+    .catch(console.error);
 }
 
 module.exports = concatJson;
