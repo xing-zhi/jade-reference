@@ -17,15 +17,15 @@ test('files2obj is a function', function(t) {
 });
 
 test('files2obj concat files in a particular folder to a module.', function(t) {
-  const folderPath = './test-data/files',
-        filePath = './test-data/files.js';
+  const folderPath = path.join(__dirname, 'test-data/files'),
+        filePath = path.join(__dirname, 'test-data/files.js');
 
   files2obj(folderPath, filePath);
 
   const filesObj = require(filePath);
 
   Object.keys(filesObj).forEach(function(key) {
-    const file = path.join(__dirname, folderPath, key);
+    const file = path.join(folderPath, key);
 
     console.log(file);
 

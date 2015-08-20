@@ -8,7 +8,7 @@ const test = require('tape'),
 
 const jades2obj = require('../gulp-tasks/jades2obj.js');
 
-const jadesPath = './test/test-data/jade-snippets';
+const jadesPath = path.join(__dirname, 'test-data/jade-snippets');
 
 function clearGeneratedData(filePath) {
   fs.unlink(filePath);
@@ -21,16 +21,16 @@ test('jades2obj is a function', function(t) {
 });
 
 test('just concat jade files to a module. ', function(t) {
-  const filePath = './test/test-data/jades.js';
+  const filePath = path.join(__dirname, 'test-data/jades.js');
 
   jades2obj(jadesPath, filePath, 'intact');
 
-  const jadesObj = require('./test-data/jades');
+  const jadesObj = require(filePath);
 
   t.equal(typeof jadesObj, 'object');
 
   Object.keys(jadesObj).forEach(function(key) {
-    const file = path.join(__dirname, `./test-data/jade-snippets/${key}.jade`);
+    const file = path.join(jadesPath, `${key}.jade`);
 
     fs.readFile(file, 'utf-8', function(err, content) {
       if ( err ) {
@@ -47,11 +47,11 @@ test('just concat jade files to a module. ', function(t) {
 });
 
 test('compile jade files and concat the result to a module', function(t) {
-  const filePath = './test/test-data/templates.js';
+  const filePath = path.join(__dirname, 'test-data/templates.js');
 
   jades2obj(jadesPath, filePath, 'compile', {highlight: false});
 
-  const templatesObj = require('./test-data/templates');
+  const templatesObj = require(filePath);
 
   t.equal(typeof templatesObj, 'object');
 
@@ -76,11 +76,11 @@ test('compile jade files and concat the result to a module', function(t) {
 });
 
 test('render jade files and concat the result to a module', function(t) {
-  const filePath = './test/test-data/htmls.js';
+  const filePath = path.join(__dirname, 'test-data/htmls.js');
 
   jades2obj(jadesPath, filePath, 'render', {highlight: false});
 
-  const htmlsObj = require('./test-data/htmls');
+  const htmlsObj = require(filePath);
 
   t.equal(typeof htmlsObj, 'object');
 

@@ -6,6 +6,10 @@ const fs = require('fs'),
 const test = require('tape'),
       concatJson = require('../gulp-tasks/concat-json');
 
+function clearGeneratedData(filePath) {
+  fs.unlink(filePath);
+}
+
 test('concatJson is a function', function(t) {
   t.equal(typeof concatJson, 'function');
 
@@ -13,19 +17,21 @@ test('concatJson is a function', function(t) {
 });
 
 test('concatJson concat json files in a folder to one json file.', function(t) {
-  const folderPath = './test-data/jsons/',
-        filePath = './test-data/jsons.json';
+  const folderPath = path.join(__dirname, 'test-data/jsons/'),
+        filePath = path.join(__dirname, 'test-data/jsons.json');
 
   concatJson(folderPath, filePath);
 
   const jsonsObj = require(filePath);
 
   Object.keys(jsonsObj).forEach(function(key) {
-    const file = path.join(__dirname, folderPath, `${key}.json`);
+    const file = path.join(folderPath, `${key}.json`);
     const contentObj = require(file);
 
     t.deepEqual(JSON.parse(jsonsObj[key]), contentObj[key]);
   });
+
+  clearGeneratedData(filePath);
 
   t.end();
 });
