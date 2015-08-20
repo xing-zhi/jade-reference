@@ -3,31 +3,26 @@
 const path = require('path'),
       fs = require('fs');
 
-function files2obj(folderName, outFile) {
-  const obj = {};
+const lib = require('./lib');
 
-  const readdir = new Promise(function(res, rej) {
-    fs.readdir(folderName, function(err, files) {
-      if ( err ) {
-        rej(err);
-      }
+function files2obj(dirname, destFile) {
+  const readdir = lib.readdir,
+        data2module = lib.data2module,
+        writeFile = lib.writeFile;
 
-      res(files);
-    });
-  });
-
-  function readFiles(files) {
+  function processFiles(filenames) {
     const promises = [];
 
-    files.forEach(function(file) {
-      const filePath = path.join(folderName, file);
+    filenames.forEach(function(filename) {
+      const filePath = path.join(dirname, filename);
+
       const promise = new Promise(function(res, rej) {
         fs.readFile(filePath, 'utf-8', function(err, content) {
           if ( err ) {
             rej(err);
           }
 
-          res([file, content]);
+          res([filename, content]);
         });
       });
 
@@ -37,31 +32,12 @@ function files2obj(folderName, outFile) {
     return Promise.all(promises);
   }
 
-  function writeFile(contentArrs) {
-    let obj = contentArrs.reduce(function(finalObj, contentArr) {
-      finalObj[contentArr[0]] = contentArr[1];
-
-      return finalObj;
-    }, {});
-
-    obj = `module.exports = ${JSON.stringify(obj)};`;
-
-    const write = new Promise(function(res, rej) {
-      fs.writeFile(outFile, obj, function(err) {
-        if ( err ) {
-          rej(err);
-        }
-
-        res();
-      });
-    });
-
-    return write;
-  }
-
-  return readdir
-    .then(readFiles)
-    .then(writeFile)
+  return readdir(dirname)
+    .then(processFiles)
+    .then(data2module)
+    .then(function(data) {
+      writeFile(destFile, data);
+    })
     .catch(console.error);
 }
 

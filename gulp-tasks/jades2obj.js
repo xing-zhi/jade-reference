@@ -5,6 +5,8 @@ const path = require('path'),
 
 const jade = require('jade');
 
+const lib = require('./lib');
+
 function render(fileContent, filePath) {
   return jade.render(fileContent, {
     debug: false,
@@ -33,18 +35,10 @@ const todosMap = new Map()
         .set('compile', compile)
         .set('intact', intact);
 
-function jades2Obj(views, outFile, todo) {
-  function readdir(folderName) {
-    return new Promise(function(res, rej) {
-      fs.readdir(folderName, function(err, filenames) {
-        if ( err ) {
-          rej(err);
-        }
-
-        res(filenames);
-      });
-    });
-  }
+function jades2Obj(dirname, destFile, todo) {
+  const readdir = lib.readdir,
+        data2module = lib.data2module,
+        writeFile = lib.writeFile;
 
   function processFiles(filenames) {
     const promises = [];
@@ -55,7 +49,7 @@ function jades2Obj(views, outFile, todo) {
       }
 
       const name = path.basename(filename, '.jade'),
-            filePath = path.join(views, filename);
+            filePath = path.join(dirname, filename);
 
       const promise = new Promise(function(res, rej) {
         fs.readFile(filePath, 'utf-8', function(err, content) {
@@ -75,35 +69,11 @@ function jades2Obj(views, outFile, todo) {
     return Promise.all(promises);
   }
 
-  function data2module(dataArr) {
-    const obj = dataArr.reduce(function(finalObj, dataItem) {
-      finalObj[dataItem[0]] = dataItem[1];
-
-      return finalObj;
-    }, {});
-
-    const module = `module.exports = ${JSON.stringify(obj)};`;
-
-    return module;
-  }
-
-  function writeFile(filePath, data) {
-    return new Promise(function(res, rej) {
-      fs.writeFile(filePath, data, function(err) {
-        if ( err ) {
-          rej(err);
-        }
-
-        res();
-      });
-    });
-  }
-
-  return readdir(views)
+  return readdir(dirname)
     .then(processFiles)
     .then(data2module)
     .then(function(data) {
-      writeFile(outFile, data);
+      writeFile(destFile, data);
     })
     .catch(console.error);
 }

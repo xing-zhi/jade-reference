@@ -3,24 +3,17 @@
 const fs = require('fs'),
       path = require('path');
 
-function concatJson(folderName, outFile) {
-  function readdir(folderName) {
-    return new Promise(function(res, rej) {
-      fs.readdir(folderName, function(err, filenames) {
-        if ( err ) {
-          rej(err);
-        }
+const lib = require('./lib');
 
-        res(filenames);
-      });
-    });
-  }
+function concatJson(dirname, destFile) {
+  const readdir = lib.readdir,
+        writeFile = lib.writeFile;
 
   function processFiles(filenames) {
     const promises = [];
 
     filenames.forEach(function processFile(filename) {
-      const filePath = path.join(folderName, filename);
+      const filePath = path.join(dirname, filename);
 
       const promise = new Promise(function(res, rej) {
         fs.readFile(filePath, 'utf-8', function(err, content) {
@@ -50,23 +43,11 @@ function concatJson(folderName, outFile) {
     return JSON.stringify(json);
   }
 
-  function writeFile(filePath, data) {
-    return new Promise(function(res, rej) {
-      fs.writeFile(filePath, data, function(err) {
-        if ( err ) {
-          rej(err);
-        }
-
-        res();
-      });
-    });
-  }
-
-  return readdir(folderName)
+  return readdir(dirname)
     .then(processFiles)
     .then(data2jsonStr)
     .then(function(data) {
-      writeFile(outFile, data);
+      writeFile(destFile, data);
     })
     .catch(console.error);
 }
