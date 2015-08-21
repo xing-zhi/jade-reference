@@ -1,11 +1,10 @@
 'use strict';
 
-const highlight = require('highlight.js').highlight;
+import highlightjs from 'highlight.js';
 
-const helper = {};
+const highlight = highlightjs.highlight,
+      helper = {};
 
-helper.highlight = function hl(str, language) {
-  return highlight(language, str).value;
-};
+helper.highlight = (str, language) => highlight(language, str).value;
 
-module.exports = helper;
+export default helper;

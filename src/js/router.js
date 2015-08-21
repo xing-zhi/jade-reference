@@ -1,6 +1,6 @@
 'use strict';
 
-const jade = require('jade');
+import jade from 'jade';
 
 function changeTocStyle(newHash, oldHash) {
   const links = document.querySelectorAll('.toc a');
@@ -45,7 +45,7 @@ function changeContent(newHash, appData) {
   contentEl.innerHTML = html;
 }
 
-module.exports = function router(newHash, oldHash, appData) {
+export default function router(newHash, oldHash, appData) {
   // change toc style
   changeTocStyle(newHash, oldHash);
 

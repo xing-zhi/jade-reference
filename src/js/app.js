@@ -1,10 +1,10 @@
 'use strict';
 
-const jade = require('jade');
+import jade from 'jade';
 
-const router = require('./router'),
-      helper = require('./helper'),
-      appData = require('./process-data');
+import router from './router';
+import helper from './helper';
+import appData from './process-data';
 
 window.addEventListener('DOMContentLoaded', function onLoad() {
   const hash = location.hash.substr(1);
