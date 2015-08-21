@@ -3,20 +3,42 @@
 const path = require('path'),
       fs = require('fs');
 
-function files2obj(folderName, outFile) {
-  const obj = {};
-  const files = fs.readdirSync(folderName);
+const lib = require('./lib');
 
-  files.forEach(function file2property(filename) {
-    const filePath = path.join(folderName, filename),
-          fileContent = fs.readFileSync(filePath, 'utf-8');
+function files2obj(dirname, destFile) {
+  const readdir = lib.readdir,
+        data2module = lib.data2module,
+        writeFile = lib.writeFile;
 
-    obj[filename] = fileContent;
-  });
+  function processFiles(filenames) {
+    const promises = [];
 
-  const outCome = `module.exports = ${JSON.stringify(obj)};`;
+    filenames.forEach(function(filename) {
+      const filePath = path.join(dirname, filename);
 
-  fs.writeFileSync(outFile, outCome);
+      const promise = new Promise(function(res, rej) {
+        fs.readFile(filePath, 'utf-8', function(err, content) {
+          if ( err ) {
+            rej(err);
+          }
+
+          res([filename, content]);
+        });
+      });
+
+      promises.push(promise);
+    });
+
+    return Promise.all(promises);
+  }
+
+  return readdir(dirname)
+    .then(processFiles)
+    .then(data2module)
+    .then(function(data) {
+      writeFile(destFile, data);
+    })
+    .catch(console.error);
 }
 
 module.exports = files2obj;

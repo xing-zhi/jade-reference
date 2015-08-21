@@ -20,26 +20,36 @@ test('files2obj concat files in a particular folder to a module.', function(t) {
   const folderPath = path.join(__dirname, 'test-data/files'),
         filePath = path.join(__dirname, 'test-data/files.js');
 
-  files2obj(folderPath, filePath);
+  function ckeck() {
+    const filesObj = require(filePath);
+    const promises = [];
+    Object.keys(filesObj).forEach(function(key) {
+      const file = path.join(folderPath, key);
 
-  const filesObj = require(filePath);
+      const promise = new Promise(function(res, rej) {
+        fs.readFile(file, 'utf-8', function(err, content) {
+          if ( err ) {
+            rej(err);
+            t.fail();
+          }
 
-  Object.keys(filesObj).forEach(function(key) {
-    const file = path.join(folderPath, key);
+          res();
+          t.equal(filesObj[key], content);
+        });
+      });
 
-    console.log(file);
-
-    fs.readFile(file, 'utf-8', function(err, content) {
-      if ( err ) {
-        console.error(err);
-        t.fail();
-      }
-
-      t.equal(filesObj[key], content);
+      promises.push(promise);
     });
-  });
 
-  clearGeneratedData(filePath);
+    return promises;
+  }
+
+  files2obj(folderPath, filePath)
+    .then(ckeck)
+    .then(function() {
+      clearGeneratedData(filePath);
+    })
+    .catch(console.error);
 
   t.end();
 });

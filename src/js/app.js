@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function onLoad() {
   const hash = location.hash.substr(1);
 
   if ( hash ) {
-    router(hash, '');
+    router(hash, '', appData);
   }
 
   window.addEventListener('hashchange', function onHashchange(e) {
