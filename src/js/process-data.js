@@ -1,27 +1,25 @@
 'use strict';
 
-const jades = require('../generated/js/jades'),
-      htmls = require('../generated/js/htmls'),
-      templates = require('../generated/js/templates'),
-      descriptions = require('../generated/js/descriptions.js'),
-      includes = require('../generated/js/includes.js'),
-      layouts = require('../generated/js/layouts.js'),
-      references = require('../generated/json/references.json'),
-      helper = require('./helper');
+import jades from '../generated/js/jades';
+import htmls from '../generated/js/htmls';
+import templates from '../generated/js/templates';
+import descriptions from '../generated/js/descriptions.js';
+import includes from '../generated/js/includes.js';
+import layouts from '../generated/js/layouts.js';
+import references from '../generated/json/references.json';
+import helper from './helper';
 
 function highlightCode(obj, language) {
-  for ( let key in obj ) {
-    if ( obj.hasOwnProperty(key) ) {
-      obj[key] = helper.highlight(obj[key], 'html');
-    }
+  const keys = Object.keys(obj);
+
+  for ( let key of keys ) {
+    obj[key] = helper.highlight(obj[key], 'html');
   }
 }
 
-(function() {
-  highlightCode(htmls, 'html');
-})();
+highlightCode(htmls, 'html');
 
-module.exports = {
+export default {
   jades,
   htmls,
   templates,

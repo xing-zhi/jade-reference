@@ -12,7 +12,7 @@
       "dest": "build/js/"
     },
     "copy": {
-      "src": "build/js/app.js",
+      "src": "build/js/app.min.js",
       "dest": "server/public/js/"
     }
   },
