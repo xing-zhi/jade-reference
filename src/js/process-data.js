@@ -10,18 +10,19 @@ import references from '../generated/json/references.json';
 import helper from './helper';
 
 function highlightCode(obj, language) {
-  const keys = Object.keys(obj);
+  const keys = Object.keys(obj),
+        highlighted = {};
 
   for ( let key of keys ) {
-    obj[key] = helper.highlight(obj[key], 'html');
+    highlighted[key] = helper.highlight(obj[key], 'html');
   }
-}
 
-highlightCode(htmls, 'html');
+  return highlighted;
+}
 
 export default {
   jades,
-  htmls,
+  htmls: highlightCode(htmls, 'html'),
   templates,
   descriptions,
   includes,
