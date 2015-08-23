@@ -39,7 +39,7 @@ gulp.task('generateHtmlsObj', function() {
   jades2Obj(cfg.data.jades2render, cfg.data.htmlsObj, 'render');
 });
 gulp.task('generateTemplatesObj', function() {
-   jades2Obj(cfg.data.templates, cfg.data.templatesObj, 'intact');
+   jades2Obj(cfg.data.templates, cfg.data.templatesObj, 'compile');
 });
 gulp.task('generateDescriptionsObj', function() {
   jades2Obj(cfg.data.desciptionsJade, cfg.data.descriptionsObj, 'render');

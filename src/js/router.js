@@ -1,7 +1,5 @@
 'use strict';
 
-import jade from 'jade';
-
 function changeTocStyle(newHash, oldHash) {
   const links = document.querySelectorAll('.toc a');
 
@@ -32,7 +30,9 @@ function changeContent(newHash, appData) {
     template = templates[newHash];
   }
 
-  const html = jade.render(template, {
+  const templateFunc = new Function(`return ${template}`)();
+
+  const html = templateFunc({
     obj: JSON.parse(appData.references[newHash]),
     jades: appData.jades,
     htmls: appData.htmls,
