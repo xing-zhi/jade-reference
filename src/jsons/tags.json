@@ -1,19 +1,31 @@
 {
-  "tags": {
-    "title": "元素标签（tags）",
-    "description": "tags",
-    "code": "tags",
-    "subSection": [
-      {
-        "title": "块扩展",
-        "description": "tag-expansion",
-        "code": "tag-expansion"
-      },
-      {
-        "title": "自关闭标签",
-        "description": "tag-self-close",
-        "code": "tag-self-close"
-      }
-    ]
-  }
+  "tags": [
+    {
+      "title": "元素标签（tags）",
+      "sections": [
+        {
+          "text": "默认情况下，一行中的第一个单词被当作HTML标签。HTML元素的嵌套关系使用缩进表示。",
+          "code": "tags"
+        }
+      ]
+    },
+    {
+      "title": "块扩展",
+      "sections": [
+        {
+          "text": "为了简洁，Jade提供了在一行内表示嵌套元素的语法：元素标签后紧跟冒号（<code>:</code>），然后是以空白字符隔开的嵌套元素。",
+          "code": "tag-expansion"
+        }
+      ]
+    },
+    {
+      "title": "自关闭标签",
+      "sections": [
+        {
+          "text": "HTML中所有的自关闭标签，比如<code>img</code>、<code>meta</code>等，都能被Jade识别并且自动关闭。另外，任何一个标签可以通过在末尾添加一个<code>/</code>显式地被关闭（只有在真正需要的时候这样做）。",
+          "code": "tag-self-close"
+        }
+      ]
+    }
+  ]
 }

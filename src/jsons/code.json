@@ -1,24 +1,48 @@
 {
-  "code": {
-    "title": "代码（code）",
-    "description": "code",
-    "subSection": [
-      {
-        "title": "不缓冲的代码",
-        "description": "code-unbuffered",
-        "code": "code-unbuffered"
-      },
-      {
-        "title": "缓冲的代码",
-        "description": "code-buffered",
-        "code": "code-buffered"
-      },
-      {
-        "title": "不转义的缓冲的代码",
-        "description": "code-buffered-unescaped",
-        "code": "code-buffered-unescaped",
-        "danger": "danger"
-      }
-    ]
-  }
+  "code": [
+    {
+      "title": "代码（code）",
+      "sections": [
+        {
+          "text": "在Jade模板中，支持3种形式的JavaScript代码。"
+        }
+      ]
+    },
+    {
+      "title": "不缓冲的代码",
+      "sections": [
+        {
+          "text": "不缓冲的代码就是在编译后的HTML中不产生直接输出的JavaScript代码，以连字符作为第一个非空白字符表示。",
+          "code": "code-unbuffered-one-line"
+        },
+        {
+          "text": "要实现跨行，只需要对后续代码行进行缩进即可。",
+          "code": "code-unbuffered-multi-line"
+        }
+      ]
+    },
+    {
+      "title": "缓冲的代码",
+      "sections": [
+        {
+          "text": "缓冲的代码即JavaScript表达式的值被计算后会被输出到编译后的HTML文件中的代码，以等号作为第一个非空白字符表示。支持任何JavaScript表达式。出于安全考虑，结果都被转义。",
+          "code": "code-buffered"
+        },
+        {
+          "text": "可以使用行内形式，在元素标签后紧跟等号，然后是以空白字符分隔的JavaScript表达式",
+          "code": "code-buffered-inline"
+        }
+      ]
+    },
+    {
+      "title": "不转义的缓冲的代码",
+      "sections": [
+        {
+          "text": "对缓冲的代码不进行转义。使用<code>!=</code>代替<code>=</code>即可。",
+          "code": "code-buffered-unescaped",
+          "danger": "未转义的缓冲代码（unescaped buffered code）是危险的，在使用时必须对用户的输入进行验证以防止跨站脚本攻击。"
+        }
+      ]
+    }
+  ]
 }

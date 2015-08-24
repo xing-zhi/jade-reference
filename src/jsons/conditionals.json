@@ -1,7 +1,17 @@
 {
-    "conditionals": {
+  "conditionals": [
+    {
       "title": "条件语句（conditionals）",
-      "description": "conditionals",
-      "code": "conditionals"
+      "sections": [
+        {
+          "text": "Jade中可以通过<code>if</code>、<code>else if</code>、<code>else</code>和<code>unless</code>表示条件，用于标记代码的前导连接符（<code>-</code>）和条件表达式的括号都可以被省略。",
+          "code": "conditionals"
+        },
+        {
+          "text": "还可以使用<code>unless</code>来表示和<code>if</code>相反的逻辑。",
+          "code": "conditionals-unless"
+        }
+      ]
     }
+  ]
 }

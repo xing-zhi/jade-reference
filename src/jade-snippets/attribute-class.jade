@@ -1,14 +1,1 @@
-//- 字符串形式指定类属性
 p(class='foo bar baz')
-
-//- 数组形式指定类属性
-- var classes=['foo', 'bar', 'baz']
-p(class=classes)
-
-//- 对象形式制定类属性
-- var currentUrl='/about'
-a(class={atcive: currentUrl === '/'} href='/') Home
-a(class={active: currentUrl === '/about'} href='/about') About
-
-//- 指定多个class属性
-p(class='foo' class=['bar', 'baz'])

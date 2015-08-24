@@ -1,41 +1,98 @@
 {
-  "attributes": {
-    "title": "元素属性（attributes）",
-    "description": "attributes",
-    "code": "attributes",
-    "subSection": [
-      {
-        "title": "非转义属性",
-        "description": "attribute-unescaped",
-        "code": "attribute-unescaped",
-        "danger": "danger"
-      },
-      {
-        "title": "布尔属性",
-        "description": "attribute-boolean",
-        "code": "attribute-boolean"
-      },
-      {
-        "title": "样式属性",
-        "description": "attribute-style",
-        "code": "attribute-style"
-      },
-      {
-        "title": "类属性",
-        "description": "attribute-class",
-        "code": "attribute-class"
-      },
-      {
-        "title": "类和ID简写",
-        "description": "attribute-shorthand",
-        "code": "attribute-shorthand"
-      },
-      {
-        "title": "&attributes",
-        "description": "attribute-attributes",
-        "code": "attribute-attributes",
-        "danger": "danger"
-      }
-    ]
-  }
+  "attributes": [
+    {
+      "title": "元素属性（Attributes）",
+      "sections": [
+        {
+          "text": "Jade标签属性在位于紧跟标签的圆括号中指定，属性值是<strong>JavaScript表达式</strong>。多个属性既可以使用逗号分隔，也可以使用空白字符分隔。",
+          "code": "attributes"
+        },
+        {
+          "text": "属性值可以使用任意的JavaScript表达式。",
+          "code": "attribute-arbitrary-js-expression"
+        },
+        {
+          "text": "当有多个属性时，可以跨多行指定。",
+          "code": "attribute-multi-lines"
+        }
+      ]
+    },
+    {
+      "title": "非转义属性（Unescaped Attributes）",
+      "sections": [
+        {
+          "text": "默认情况下，为了防止攻击，比如跨站脚本攻击，所有的标签属性值都是被转义的。如果不希望被转义，使用<code>!=</code>代替<code>=</code>",
+          "code": "attribute-unescaped",
+          "danger": "未转义的缓冲代码（unescaped buffered code）是危险的，在使用时必须对用户的输入进行验证以防止跨站脚本攻击。"
+        }
+      ]
+    },
+    {
+      "title": "布尔属性（Boolean Attributes）",
+      "sections": [
+        {
+          "text": "对于布尔属性，出现即表示指定该属性，同时接受布尔值。当doctype不是html时，当结果是指定该属性时，该属性名会被自动添加为属性值。（这里只显示doctype为html时生成的HTML代码。）",
+          "code": "attribute-boolean"
+        }
+      ]
+    },
+    {
+      "title": "样式属性",
+      "sections": [
+        {
+          "text": "样式属性可以按常规使用字符串形式指定。",
+          "code": "attribute-style"
+        },
+        {
+          "text": "样式属性还可以使用对象形式指定。",
+          "code": "attribute-style-object"
+        }
+
+      ]
+    },
+    {
+      "title": "类属性",
+      "sections": [
+        {
+          "text": "类属性可以按常规使用字符串形式指定。",
+          "code": "attribute-class"
+        },
+        {
+          "text": "类属性可以使用数组指定。",
+          "code": "attribute-class-array"
+        },
+        {
+          "text": "类属性还可以使用属性名为类名，属性值为布尔值的对象指定。",
+          "code": "attribute-class-object"
+        },
+        {
+          "text": "Jade支持同时指定多个类属性。多个类属性编译后被合并到一起。",
+          "code": "attribute-class-multi"
+        }
+      ]
+    },
+    {
+      "title": "简写形式",
+      "sections": [
+        {
+          "text": "类属性和ID属性可以使用CSS选择符的形式指定。",
+          "code": "attribute-shorthand"
+        },
+        {
+          "text": "因为<code>div</code>是最常用的元素标签，所以在使用类或ID简写时，如果省略元素标签，将使用<code>div</code>。",
+          "code": "attribute-shorthand-div"
+        }
+      ]
+    },
+    {
+      "title": "&attributes",
+      "sections": [
+        {
+          "text": "<code>&attributes</code>接受一个对象作为参数，将该对象的每一个属性作为元素属性添加到元素中。",
+          "code": "attribute-attributes",
+          "danger": "通过<code>&attributes</code>添加的属性没有被自动转义，使用时要对用户的输入进行验证以防止跨站脚本攻击。"
+        }
+      ]
+    }
+  ]
 }

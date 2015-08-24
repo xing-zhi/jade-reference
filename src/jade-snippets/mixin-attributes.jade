@@ -1,11 +1,5 @@
 mixin link(href, name)
-  //- attributes == {class: "btn"}
+  //- attributes == {class: "foo", id: "bar"}
   a(class!=attributes.class, id=attributes.id, href=href)= name
 
 +link('/foo', 'foo')(class='foo', id='bar')
-
-// 使用&attributes
-mixin link(href, name)
-  a(href=href)&attributes(attributes)= name
-
-+link('/foo', 'foo')(class="btn")

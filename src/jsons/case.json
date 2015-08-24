@@ -1,7 +1,31 @@
 {
-  "case": {
-    "title": "分支语句（case）",
-    "description": "case",
-    "code": "case"
-  }
+  "case": [
+    {
+      "title": "分支语句（case）",
+      "sections": [
+        {
+          "text": "Jade中的<code>case</code>语句类似JavaScript中的<code>switch</code>语句，只是使用<code>case-when</code>而不是<code>switch-case</code>，同时不使用<code>break</code>。",
+          "code": "case"
+        }
+      ]
+    },
+    {
+      "title": "Fall through",
+      "sections": [
+        {
+          "text": "分支语句支持<code>fall through</code>",
+          "code": "case-fall-through"
+        }
+      ]
+    },
+    {
+      "title": "块扩展",
+      "sections": [
+        {
+          "text": "分支语句中可以使用标签块扩展。",
+          "code": "case-block-expansion"
+        }
+      ]
+    }
+  ]
 }

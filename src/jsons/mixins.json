@@ -1,24 +1,49 @@
 {
-  "mixins": {
-    "title": "mixin",
-    "description": "mixins",
-    "code": "mixins",
-    "subSection": [
-      {
-        "title": "mixin块",
-        "description": "mixin-block",
-        "code": "mixin-block"
-      },
-      {
-        "title": "mixin属性",
-        "description": "mixin-attributes",
-        "code": "mixin-attributes"
-      },
-      {
-        "title": "剩余参数",
-        "description": "mixin-rest",
-        "code": "mixin-rest"
-      }
-    ]
-  }
+  "mixins": [
+    {
+      "title": "Mixins",
+      "sections": [
+        {
+          "text": "mixin用于创建可重用的Jade块。mixin由mixin关键字，mixin名和一到多行Jade代码组成的mixin体组成。在使用时，在mixin名前添加加号（<code>+</code>）。",
+          "code": "mixins"
+        },
+        {
+          "text": "mixin被编译成函数，并且可以接受参数。",
+          "code": "mixins-arguments"
+        }
+      ]
+    },
+    {
+      "title": "mixin块",
+      "sections": [
+        {
+          "text": "在使用mixin时，mixin接受mixin块作为内容。Mixin块就是紧跟在”调用“mixin后的一到多行缩进的Jade代码。",
+          "code": "mixin-block"
+        }
+      ]
+    },
+    {
+      "title": "mixin属性",
+      "sections": [
+        {
+          "text": "mixin会自动获取一个参数<code>attributes</code>，就像JavaScript中函数会自动获取<code>arugments</code>和<code>this</code>一样。<code>attributes</code>的值通过在正常调用mixin后跟一对圆括号，然后在其中指定属性。",
+          "code": "mixin-attributes",
+          "note": "<code>attributes</code>的值默认被转义，如果要不被转义，需要使用<code>!=</code>代替<code>=</code>。"
+        },
+        {
+          "text": "也可以使用<code>&amp;attributes</code>。",
+          "code": "mixin-and-attributes"
+        }
+      ]
+    },
+    {
+      "title": "剩余参数",
+      "sections": [
+        {
+          "text": "和ES6中的剩余参数一样。",
+          "code": "mixin-rest"
+        }
+      ]
+    }
+  ]
 }

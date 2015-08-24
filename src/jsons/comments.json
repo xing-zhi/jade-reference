@@ -1,18 +1,43 @@
 {
-  "comments": {
-    "title": "注释（comments）",
-    "description": "comments",
-    "subSection": [
-      {
-        "title": "单行注释和块注释",
-        "description": "comments-general",
-        "code": "comments-general"
-      },
-      {
-        "title": "条件注释",
-        "description": "comments-conditional",
-        "code": "comments-conditional"
-      }
-    ]
-  }
+  "comments": [
+    {
+      "title": "注释（comments）",
+      "sections": [
+        {
+          "text": "Jade支持行注释、块注释和条件注释。"
+        }
+      ]
+    },
+    {
+      "title": "行注释",
+      "sections": [
+        {
+          "text": "Jade使用与JavaScript中相同的行注释语法。",
+          "code": "comments-single-line"
+        },
+        {
+          "text": "当不希望某个注释被编译到HTML文件中时，在注释符后紧跟一个连字符（-）。",
+          "code": "comments-unbuffered"
+        }
+      ]
+    },
+    {
+      "title": "块注释",
+      "sections": [
+        {
+          "text": "Jade中的块注释，通过对后续行进行缩进实现。",
+          "code": "comments-block"
+        }
+      ]
+    },
+    {
+      "title": "条件注释",
+      "sections": [
+        {
+          "text": "Jade没有为条件注释提供特别的语法，因为所有以<code><</code>开始的行都被当作纯文本看待，所以只需要使用正常的HTML条件注释就可以了。",
+          "code": "comments-conditional"
+        }
+      ]
+    }
+  ]
 }
