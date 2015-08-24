@@ -5,7 +5,7 @@ const source = require('vinyl-source-stream'),
       browserify = require('browserify'),
       babelify = require('babelify');
 
-module.exports = function (gulp, $, cfg) {
+module.exports = function(gulp, $, cfg) {
   return browserify(cfg.src)
     .transform(babelify)
     .bundle()

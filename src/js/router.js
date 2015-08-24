@@ -30,6 +30,7 @@ function changeContent(newHash, appData) {
     template = templates[newHash];
   }
 
+  /* eslint no-new-func:0 */
   const templateFunc = new Function(`return ${template}`)();
 
   const html = templateFunc({
@@ -51,4 +52,4 @@ export default function router(newHash, oldHash, appData) {
 
   // change content
   changeContent(newHash, appData);
-};
+}

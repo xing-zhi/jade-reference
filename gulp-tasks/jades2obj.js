@@ -44,15 +44,15 @@ function jades2Obj(dirname, destFile, todo) {
     const promises = [];
 
     filenames.forEach(function processFile(filename) {
-      if ( !/.jade$/.test(filename) ) {
+      if ( !(/.jade$/).test(filename) ) {
         return ;
       }
 
       const name = path.basename(filename, '.jade'),
             filePath = path.join(dirname, filename);
 
-      const promise = new Promise(function(res, rej) {
-        fs.readFile(filePath, 'utf-8', function(err, content) {
+      const promise = new Promise(function promiseDef(res, rej) {
+        fs.readFile(filePath, 'utf-8', function readFile(err, content) {
           if ( err ) {
             rej(err);
           }
@@ -72,7 +72,7 @@ function jades2Obj(dirname, destFile, todo) {
   return readdir(dirname)
     .then(processFiles)
     .then(data2module)
-    .then(function(data) {
+    .then(function stepWriteFile(data) {
       writeFile(destFile, data);
     })
     .catch(console.error);

@@ -13,11 +13,11 @@ function files2obj(dirname, destFile) {
   function processFiles(filenames) {
     const promises = [];
 
-    filenames.forEach(function(filename) {
+    filenames.forEach(function processFile(filename) {
       const filePath = path.join(dirname, filename);
 
-      const promise = new Promise(function(res, rej) {
-        fs.readFile(filePath, 'utf-8', function(err, content) {
+      const promise = new Promise(function promiseDef(res, rej) {
+        fs.readFile(filePath, 'utf-8', function readFile(err, content) {
           if ( err ) {
             rej(err);
           }
@@ -35,7 +35,7 @@ function files2obj(dirname, destFile) {
   return readdir(dirname)
     .then(processFiles)
     .then(data2module)
-    .then(function(data) {
+    .then(function stepWriteFile(data) {
       writeFile(destFile, data);
     })
     .catch(console.error);

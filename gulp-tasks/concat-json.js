@@ -15,8 +15,8 @@ function concatJson(dirname, destFile) {
     filenames.forEach(function processFile(filename) {
       const filePath = path.join(dirname, filename);
 
-      const promise = new Promise(function(res, rej) {
-        fs.readFile(filePath, 'utf-8', function(err, content) {
+      const promise = new Promise(function processDef(res, rej) {
+        fs.readFile(filePath, 'utf-8', function readFile(err, content) {
           if ( err ) {
             rej(err);
           }
@@ -32,7 +32,7 @@ function concatJson(dirname, destFile) {
   }
 
   function data2jsonStr(objArr) {
-    const json =  objArr.reduce(function objs2json(finalJson, obj) {
+    const json = objArr.reduce(function objs2json(finalJson, obj) {
       return Object.keys(obj).reduce(function processObj(tmpJson, key) {
         tmpJson[key] = JSON.stringify(obj[key]);
 
@@ -46,7 +46,7 @@ function concatJson(dirname, destFile) {
   return readdir(dirname)
     .then(processFiles)
     .then(data2jsonStr)
-    .then(function(data) {
+    .then(function stepWriteFile(data) {
       writeFile(destFile, data);
     })
     .catch(console.error);

@@ -13,8 +13,9 @@ function highlightCode(obj, language) {
   const keys = Object.keys(obj),
         highlighted = {};
 
+  /* eslint prefer-const:0 */
   for ( let key of keys ) {
-    highlighted[key] = helper.highlight(obj[key], 'html');
+    highlighted[key] = helper.highlight(obj[key], language);
   }
 
   return highlighted;
