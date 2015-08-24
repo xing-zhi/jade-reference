@@ -1,19 +1,19 @@
-h1= obj.title
-div.description: !{descriptions[obj.description]}
-if obj.code
-  .code-wrap
-    .code-boxes
-      .box.jade(contentEditable='true')
-        pre= jades[obj.code]
-    .code-boxes
-      .box.html!= htmls[obj.code]
-if obj.subSection
-  for section in obj.subSection
-    h2= section.title
-    div.description: !{descriptions[section.description]}
-    .code-wrap
-      .code-boxes
-        .box.jade(contentEditable='true')
-          pre= jades[section.code]
-      .code-boxes
-        .box.html!= htmls[section.code]
+for item in obj
+  h1= item.title
+  for section in item.sections
+    p.description: !{section.text}
+    if section.code
+      .code-wrap
+        .code-boxes
+          .box.jade(contentEditable='true')
+            pre= jades[section.code]
+        .code-boxes
+          .box.html!= htmls[section.code]
+      if section.danger
+        .panel.panel-danger
+          .panel-heading 危险提示
+          .panel-body!= section.danger
+      if section.note
+        .panel.panel-info
+          .panel-heading 提示
+          .panel-body!= section.note

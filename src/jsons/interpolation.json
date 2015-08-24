@@ -1,24 +1,48 @@
 {
-  "interpolation": {
-    "title": "插值（interpolation）",
-    "description": "interpolation",
-    "subSection": [
-      {
-        "title": "转义的字符串插值",
-        "description": "interpolation-escape",
-        "code": "interpolation-escape"
-      },
-      {
-        "title": "不转义的字符串插值",
-        "description": "interpolation-unescape",
-        "code": "interpolation-unescape",
-        "danger": "danger"
-      },
-      {
-        "title": "元素标签插值",
-        "description": "interpolation-tag",
-        "code": "interpolation-tag"
-      }
-    ]
-  }
+  "interpolation": [
+    {
+      "title": "插值（interpolation）",
+      "sections": [
+        {
+          "text": "Jade提供了3种插值操作。"
+        }
+      ]
+    },
+    {
+      "title": "转义的字符串插值",
+      "sections": [
+        {
+          "text": "字符串中，任何位于<code>#{}</code>中的内容都被当作JavaScript表达式；在编译时，<code>#{}</code>块会被替换为表达式的值，并且其中的特殊字符被转义。",
+          "code": "interpolation-escape"
+        },
+        {
+          "text": "当某个元素的内容是某个JavaScript表达式时，可以使用简写形式：在元素标签后紧跟一个等号（<code>=</code>），然后是空白字符隔开的JavaScript表达式。",
+          "code": "interpolation-escape-shorthand"
+        },
+        {
+          "text": "用于字符串插值的JavaScript表达式可以是任意的表达式。",
+          "code": "interpolation-escape-arbitrary"
+        }
+      ]
+    },
+    {
+      "title": "不转义的字符串插值",
+      "sections": [
+        {
+          "text": "当需要JavaScript表达式的值中的特殊字符不被转义时，使用<code>!{}</code>替换<code>#{}</code>；而简写形式时<code>！=</code>替换<code>=</code>。",
+          "code": "interpolation-unescape",
+          "danger": "在使用不转义的字符串插值时，当插值的内容来自用户输入时是很危险的。永远不要相信用户的输入。"
+        }
+      ]
+    },
+    {
+      "title": "元素标签插值",
+      "sections": [
+        {
+          "text": "当需要插入HTML元素时，只需要把元素标签声明放在<code>#[]</code>中即可，当然，也可以使用相应的HTML。",
+          "code": "interpolation-tag"
+        }
+      ]
+    }
+  ]
 }

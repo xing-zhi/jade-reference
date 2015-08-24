@@ -1,18 +1,38 @@
 {
-  "iteration": {
-    "title": "迭代（iteration）",
-    "description": "iteration",
-    "subSection": [
-      {
-        "title": "each",
-        "description": "iteration-each",
-        "code": "iteration-each"
-      },
-      {
-        "title": "while",
-        "description": "iteration-while",
-        "code": "iteration-while"
-      }
-    ]
-  }
+  "iteration": [
+    {
+      "title": "迭代（iteration）",
+      "sections": [
+        {
+          "text": "Jade支持两种迭代：<code>each...in</code>和<code>while</code>，其中可以使用<code>for</code>作为<code>each</code>的别名。"
+        }
+      ]
+    },
+    {
+      "title": "each",
+      "sections": [
+        {
+          "text": "<code>each...in</code>可以用来对数组和对象进行迭代，默认情况下是对值进行迭代，这与<code>for...in</code>不同，而和ES6中的<code>for...of</code>相同。可以使用<code>for</code>作为<code>each</code>的别名。",
+          "code": "iteration-each"
+        },
+        {
+          "text": "在迭代过程中，还可以通过指定第二个变量来获取数组索引或者对象属性名。",
+          "code": "iteration-each-index"
+        },
+        {
+          "text": "被迭代的对象除了是数组或对象字面值外，还可以是结果为数组或对象的任何JavaScript表达式。",
+          "code": "iteration-each-js-expression"
+        }
+      ]
+    },
+    {
+      "title": "while",
+      "sections": [
+        {
+          "text": "<code>while</code>用于创建循环，和JavaScript中的<code>while</code>类似。",
+          "code": "iteration-while"
+        }
+      ]
+    }
+  ]
 }
