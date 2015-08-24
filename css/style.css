@@ -339,3 +339,37 @@ sidebar.toc li a.active {
   outline: none;
   box-shadow: 0 0 1px 1px grey;
 }
+
+.panel {
+  margin: 10px 0 20px 0;
+  background-color: #fff;
+  border: 1px solid;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.panel .panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid;
+    border-radius: 3px 3px 0 0;
+}
+.panel .panel-body {
+    padding: 15px;
+}
+
+.panel-danger {
+    border-color: #ebccd1;
+}
+.panel-danger .panel-heading {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ecbcb1;
+}
+
+.panel-info {
+    border-color: #bce8f1;
+}
+.panel-info .panel-heading {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
