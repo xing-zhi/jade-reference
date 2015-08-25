@@ -41,9 +41,6 @@ gulp.task('generateHtmlsObj', function() {
 gulp.task('generateTemplatesObj', function() {
    jades2Obj(cfg.data.templates, cfg.data.templatesObj, 'compile');
 });
-gulp.task('generateDescriptionsObj', function() {
-  jades2Obj(cfg.data.desciptionsJade, cfg.data.descriptionsObj, 'render');
-});
 gulp.task('generateLayoutsObj', function() {
    jades2Obj(cfg.data.layouts, cfg.data.layoutsObj, 'intact');
 });
@@ -56,7 +53,7 @@ gulp.task('concatJson', function() {
   concatJson(cfg.concatJson.src, cfg.concatJson.dest);
 });
 
-gulp.task('generateData', ['generateJadesObj', 'generateHtmlsObj', 'generateTemplatesObj', 'generateDescriptionsObj', 'generateIncludesObj', 'generateLayoutsObj']);
+gulp.task('generateData', ['generateJadesObj', 'generateHtmlsObj', 'generateTemplatesObj', 'generateIncludesObj', 'generateLayoutsObj']);
 
 gulp.task('build:css', function() {
   runSequence('cleanCss', 'sass', 'minifyCss', 'copyCss');

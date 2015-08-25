@@ -37,7 +37,6 @@ function changeContent(newHash, appData) {
     obj: JSON.parse(appData.references[newHash]),
     jades: appData.jades,
     htmls: appData.htmls,
-    descriptions: appData.descriptions,
     includes: appData.includes,
     layouts: appData.layouts,
     doctpe: 'html'
