@@ -1,15 +1,14 @@
 //- page.jade
-extends layouts/layout
+extends layouts/layout-two-column
 
-append head
-  title Awesome Site
+block sidebar
+  h1 sidebar
 
-block header
-  h1 Awesome Site
+block primary
+  h1 primary
 
-block content
-  p Welcome to this awesome site
-  p You can learn something about Jade here
+prepend script
+  script(src='js/runtime.js')
 
-prepend footer
-  p Any error please contact @#{author}
+append script
+  script(src='js/google-analytics.js')

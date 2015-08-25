@@ -1,0 +1,21 @@
+//- layouts/layout-default
+
+doctype html
+html
+  head
+    block head
+      meta(charset='utf-8')
+      title Jade reference
+      block css
+        link(rel='stylesheet' href='css/style.min.css')
+  body
+    header
+      block header
+        h1 My Site
+    .content
+      block content
+    footer
+      block footer
+        p Copyright &copy; #{siteName}
+    block script
+      script(src='js/app.min.js')

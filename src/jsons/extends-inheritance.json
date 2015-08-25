@@ -1,9 +1,52 @@
 {
-    "extends": {
+  "extends": [
+    {
       "title": "extends指令和模板继承（extends & template inheritance）",
-      "description": "extends-inheritance",
-      "jadecode": "page",
-      "layoutcode": "layout",
-      "htmlcode": "page"
+      "sections": [
+        {
+          "text": ["Jade提供了<code>extends</code>指令用于通过重写或改写模板中预先定义的内容块来扩充模板。从而实现模板继承。"]
+        }
+      ]
+    },
+    {
+      "title": "内容块",
+      "sections": [
+        {
+          "text": [
+            "内容块通过<code>block</code>关键字，内容块名和可选的内容定义，内容块的内容即后续的缩进块。内容块中可以包含内容块。",
+            "下面的示例模板中，一共定义了6个内容块，其中内容块<code>head</code>、<code>css</code>、<code>header</code>、<code>footer</code>和<code>script</code>有内容；内容块<code>content</code>没有内容；而且内容块<code>css</code>包含在内容块<code>head</code>中。"
+          ],
+          "layoutcode": ["layout-default"]
+        }
+      ]
+    },
+    {
+      "title": "扩充模板",
+      "sections": [
+        {
+          "text": [
+            "在扩充模板过程中，既可以对其中的内容块进行替换，也可以给其中的内容块添加前置内容或者附加内容。",
+            "替换内容通过定义一个同名内容块实现。",
+            "添加前置内容或者附加内容通过定义前置块或者附加块实现。前置块通过<code>block prepend</code>定义，附加块通过<code>block append</code>定义。定义前置块和附加块时，<code>block</code>是可选的。",
+            "下面的示例模板中，扩充了模板layouts/layout-two-column。替换了原模板中的内容块<code>sidebar</code>和<code>primary</code>，给内容块<code>script</code>添加了前置块和附加块。"
+          ],
+          "code": "page"
+        }
+      ]
+    },
+    {
+      "title": "模板继承",
+      "sections": [
+        {
+          "text": [
+            "通过<code>extends</code>指令和内容块就可以通过扩充模板实现模板继承。",
+            "下面的示例中，进行了两次继承：page.jade继承自layouts/layout-two-column，而layouts/layout-two-column继承自layouts/layout-default。"
+          ],
+          "code": "page",
+          "layoutcode": ["layout-two-column", "layout-default"],
+          "htmlcode": "page"
+        }
+      ]
     }
+  ]
 }
