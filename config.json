@@ -39,13 +39,11 @@
     "jades": "src/jade-snippets/",
     "jades2render": "src/jade-snippets/",
     "templates": "src/templates/",
-    "desciptionsJade": "src/jade-descriptions/",
     "includes": "src/jade-snippets/includes/",
     "layouts": "src/jade-snippets/layouts/",
     "jadesObj": "src/generated/js/jades.js",
     "htmlsObj": "src/generated/js/htmls.js",
     "templatesObj": "src/generated/js/templates.js",
-    "descriptionsObj": "src/generated/js/descriptions.js",
     "includesObj": "src/generated/js/includes.js",
     "layoutsObj": "src/generated/js/layouts.js"
   },
