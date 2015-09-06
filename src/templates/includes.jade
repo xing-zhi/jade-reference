@@ -1,5 +1,5 @@
 h1= obj.title
-div.description: !{[obj.description]}
+div.description: !{obj.description}
 .code-wrap
   .code-boxes
     .box.jade
@@ -11,7 +11,7 @@ div.description: !{[obj.description]}
     .box.html!= htmls[obj.htmlcode]
 for section in obj.subSection
   h2= section.title
-  div.description: !{descriptions[section.description]}
+  div.description: !{section.description}
   .code-wrap
     .code-boxes
       .box.jade
