@@ -31,21 +31,21 @@ nav {
             border: none;
             float: none;
             width: 100%;
-        }
-        &:last-child {
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
-        }
-        a {
-            display: block;
-            text-decoration: none;
-            padding: 5px 0;
-            color: #fff;
-            background-color: #a00;
-            transition: background-color 0.5s;
-            &:hover {
+            &:last-child {
+                box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+            }
+            a {
+                display: block;
                 text-decoration: none;
-                background-color: #c00;
+                padding: 5px 0;
                 color: #fff;
+                background-color: #a00;
+                transition: background-color 0.5s;
+                &:hover {
+                    text-decoration: none;
+                    background-color: #c00;
+                    color: #fff;
+                }
             }
         }
     }
