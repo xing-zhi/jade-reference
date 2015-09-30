@@ -1,13 +1,26 @@
 header {
     .logo-container {
+        background-color: #589983;
         text-align: center;
-        background: url('../imgs/bg.jpg');
-        padding-top: 50px;
-        padding-bottom: 50px;
-        img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
+        a {
+            color: #fff;
+        }
+    }
+}
+
+@media (min-width: 600px) {
+    header {
+        .logo-container {
+            padding-top: 50px;
+            padding-bottom: 50px;
+            background: url('../imgs/bg.jpg');
+            a {
+                display: block;
+                text-indent: -10000px;
+                background: url('../imgs/jade-logo-header.svg') no-repeat center;
+                height: 120px;
+
+            }
         }
     }
 }
