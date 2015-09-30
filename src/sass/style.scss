@@ -1,4 +1,5 @@
 @import "compass/reset";
+@import "compass/utilities/general/clearfix";
 @import "./_sass/github";
 @import "./_sass/basic";
 @import "./_sass/layout";
@@ -6,3 +7,4 @@
 @import "./_sass/toc";
 @import "./_sass/content";
 @import "./_sass/panel";
+@import "./_sass/nav";

@@ -1,11 +1,9 @@
-sidebar.toc {
-    margin-bottom: 0px;
-    margin-top: 0px;
-    padding-left: 0px;
-    width: 20%;
+aside.toc {
+    padding: 0 20px;
     li {
-        list-style: none;
         margin-top: 2px;
+        float: left;
+        width: 50%;
         a {
             display: block;
             text-decoration: none;
@@ -24,4 +22,14 @@ sidebar.toc {
             }
         }
     }
+}
+
+@media (min-width: 600px) {
+    aside.toc {
+        li {
+            float: none;
+            width: 100%;
+        }
+    }
+
 }

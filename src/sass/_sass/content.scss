@@ -1,9 +1,7 @@
 .code-wrap {
-    display: flex;
     .code-boxes {
-        width: 50%;
         .box {
-            margin: 10px;
+            margin: 10px 0;
             padding: 10px;
             border: 1px solid grey;
             overflow: auto;
@@ -20,3 +18,14 @@
     }
 }
 
+@media (min-width: 800px) {
+    .code-wrap{
+        display: flex;
+        .code-boxes {
+            width: 50%;
+            .box {
+                margin: 10px 10px;
+            }
+        }
+    }
+}

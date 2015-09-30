@@ -30,6 +30,9 @@ a {
         color: #3c6859;
         text-decoration: underline;
     }
+    &:active {
+        text-decoration: none;
+    }
 }
 
 code {
