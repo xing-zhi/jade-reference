@@ -31,7 +31,7 @@ function changeContent(newHash, appData) {
   }
 
   /* eslint no-new-func:0 */
-  const templateFunc = new Function(`return ${template}`)();
+  const templateFunc = new Function(`return ${template}`)();    // jshint ignore:line
 
   const html = templateFunc({
     obj: JSON.parse(appData.references[newHash]),

@@ -44,7 +44,7 @@ function jades2Obj(dirname, destFile, todo) {
     const promises = [];
 
     filenames.forEach(function processFile(filename) {
-      if ( !(/.jade$/).test(filename) ) {
+      if ( !/.jade$/.test(filename) ) {
         return ;
       }
 
