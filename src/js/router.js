@@ -1,5 +1,7 @@
 'use strict';
 
+import helper from './helper';
+
 function changeTocStyle(newHash, oldHash) {
   const links = document.querySelectorAll('.toc a');
 
@@ -16,30 +18,8 @@ function changeTocStyle(newHash, oldHash) {
 }
 
 function changeContent(newHash, appData) {
-  const templates = appData.templates,
-        contentEl = document.querySelector('.content');
-
-  const templateSet = new Set()
-          .add('extends')
-          .add('includes')
-          .add('filters');
-
-  let template = templates.general;
-
-  if ( templateSet.has(newHash) ) {
-    template = templates[newHash];
-  }
-
-  const templateFunc = new Function(`return ${template}`)();    // jshint ignore:line
-
-  const html = templateFunc({
-    obj: JSON.parse(appData.references[newHash]),
-    jades: appData.jades,
-    htmls: appData.htmls,
-    includes: appData.includes,
-    layouts: appData.layouts,
-    doctpe: 'html'
-  });
+  const contentEl = document.querySelector('.content'),
+        html = helper.renderTemplate(newHash, appData);
 
   contentEl.innerHTML = html;
 }
