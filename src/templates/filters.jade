@@ -2,7 +2,7 @@ for syntaxItem in syntaxObj
   h1= syntaxItem.title
   for section in syntaxItem.sections
     for t in section.text
-      p.description: !{t}
+      p.description !{t}
     .code-wrap
       .code-boxes
         .box.jade
