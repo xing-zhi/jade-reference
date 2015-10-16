@@ -1,23 +1,14 @@
-h1= obj.title
-div.description: !{obj.description}
-.code-wrap
-  .code-boxes
-    .box.jade
-      pre= jades[obj.jadecode]
-    for code in obj.includescode
-      .box.jade
-        pre= includes[code]
-  .code-boxes
-    .box.html!= htmls[obj.htmlcode]
-for section in obj.subSection
-  h2= section.title
-  div.description: !{section.description}
-  .code-wrap
-    .code-boxes
-      .box.jade
-        pre= jades[section.jadecode]
-      for code in section.includescode
+for item in obj
+  h1= item.title
+  for section in item.sections
+    if section.text
+      p.description: !{section.text}
+    .code-wrap
+      .code-boxes
         .box.jade
-          pre= includes[code]
-    .code-boxes
-      .box.html!= htmls[section.htmlcode]
+          pre= jades[section.jadecode]
+        for code in section.includescode
+          .box.jade
+            pre= includes[code]
+      .code-boxes
+        .box.html!= htmls[section.htmlcode]

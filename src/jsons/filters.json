@@ -1,14 +1,20 @@
 {
-    "filters": {
+  "filters": [
+    {
       "title": "过滤器（filters）",
-      "description": [
-        "过滤器使我们可以在Jade模板中使用其他语言，它们接受纯文本块作为输入。",
-        "所有的<a href='https://www.npmjs.com/browse/keyword/jstransformer'>JSTransformers</a>都可以用做Jade的过滤器，其中常用的有：<code>:coffee-script</code>, <code>:babel</code>, <code>:uglify-js</code>, <code>:less</code>和<code>:marked</code>。"
-      ],
-      "code": "filters",
-      "warning": [
-        "过滤器是编译时，这使得它们很快， 但也意味着它们不支持动态内容。",
-        "内建的过滤器在浏览器中不可用，如果要使用过滤器，需要在服务器端编译好。"
+      "sections": [
+        {
+          "text": [
+            "过滤器使我们可以在Jade模板中使用其他语言，它们接受纯文本块作为输入。",
+            "所有的<a href='https://www.npmjs.com/browse/keyword/jstransformer'>JSTransformers</a>都可以用做Jade的过滤器，其中常用的有：<code>:coffee-script</code>, <code>:babel</code>, <code>:uglify-js</code>, <code>:less</code>和<code>:marked</code>。"
+          ],
+          "code": "filters",
+          "warning": [
+            "过滤器是编译时，这使得它们很快， 但也意味着它们不支持动态内容。",
+            "内建的过滤器在浏览器中不可用，如果要使用过滤器，需要在服务器端编译好。"
+          ]
+        }
       ]
     }
+  ]
 }

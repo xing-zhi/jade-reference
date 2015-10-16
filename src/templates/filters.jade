@@ -1,13 +1,15 @@
-h1= obj.title
-for item in obj.description
-  p.description!= item
-.code-wrap
-  .code-boxes
-    .box.jade
-      pre= jades[obj.code]
-  .code-boxes
-    .box.html!= htmls[obj.code]
-.panel.panel-warning
-  .panel-heading 警告
-  for item in obj.warning
-    .panel-body!= item
+for item in obj
+  h1= item.title
+  for section in item.sections
+    for t in section.text
+      p.description: !{t}
+    .code-wrap
+      .code-boxes
+        .box.jade
+          pre= jades[section.code]
+      .code-boxes
+        .box.html!= htmls[section.code]
+    .panel.panel-warning
+      .panel-heading 警告
+      for warning in section.warning
+        .panel-body!= warning
