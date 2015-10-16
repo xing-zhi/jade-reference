@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', function onLoad() {
 
   document.addEventListener('input', function onInput(e) {
     const target = e.target,
-          text = target.innerText,
+          text = target.textContent || target.innerText,
           htmlContainer = target.parentNode.parentNode.querySelector('.html'),
           html = jade.render(text, {
             pretty: true
