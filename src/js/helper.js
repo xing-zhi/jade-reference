@@ -25,9 +25,8 @@ helper.renderTemplate = function(hash, datas) {
       templateName = hash;
     }
 
-    /* eslint no-new-func:0 */
     const template = templates[templateName],
-          templateFunc = new Function(`return ${template}`)();
+          templateFunc = new Function(`return ${template}`)();    // jshint ignore: line
 
     html = templateFunc({
       obj: JSON.parse(datas.references[hash]),
