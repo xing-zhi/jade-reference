@@ -29,7 +29,7 @@ helper.renderTemplate = function(hash, datas) {
           templateFunc = new Function(`return ${template}`)();    // jshint ignore: line
 
     html = templateFunc({
-      obj: JSON.parse(datas.references[hash]),
+      syntaxObj: JSON.parse(datas.references[hash]),
       jades: datas.jades,
       htmls: datas.htmls,
       includes: datas.includes,
