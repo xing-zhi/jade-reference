@@ -1,0 +1,8 @@
+{
+  "preset": "google",
+  "disallowSpacesInsideParentheses": null,
+  "disallowMultipleVarDecl": null,
+  "excludeFiles": [
+    "node_modules/**"
+  ]
+}

@@ -3,6 +3,8 @@
 module.exports = function lint(gulp, $, js) {
   return gulp
     .src(js)
-    .pipe($.eslint())
-    .pipe($.eslint.format());
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('jshint-stylish'))
+    .pipe($.jscs())
+    .pipe($.jscsStylish());
 };
