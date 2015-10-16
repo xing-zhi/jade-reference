@@ -30,7 +30,6 @@ function changeContent(newHash, appData) {
     template = templates[newHash];
   }
 
-  /* eslint no-new-func:0 */
   const templateFunc = new Function(`return ${template}`)();    // jshint ignore:line
 
   const html = templateFunc({
