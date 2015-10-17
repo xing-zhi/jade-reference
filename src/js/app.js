@@ -28,6 +28,6 @@ window.addEventListener('DOMContentLoaded', function onLoad() {
             pretty: true
           }).trim();
 
-    htmlContainer.innerHTML = helper.highlight(html, 'html');
+    htmlContainer.innerHTML = helper.highlight(html);
   });
 });

@@ -22,6 +22,11 @@ function changeContent(newHash, appData) {
         html = helper.renderTemplate(newHash, appData);
 
   contentEl.innerHTML = html;
+
+  [].forEach.call(contentEl.querySelectorAll('.html'), function(el) {
+    console.log(el.textContent);
+    el.innerHTML = helper.highlight(el.textContent || el.innerText);
+  });
 }
 
 export default function router(newHash, oldHash, appData) {

@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "express": "^4.13.3",
+    "highlight-redux": "^1.0.1",
     "highlight.js": "^8.7.0",
     "jade": "^1.11.0",
     "jstransformer-marked": "^1.0.1",

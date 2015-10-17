@@ -1,11 +1,20 @@
 'use strict';
 
-import highlightjs from 'highlight.js';
+import hljs from 'highlight-redux';
 
-const highlight = highlightjs.highlight,
-      helper = {};
+hljs.registerLanguage('html', require('highlight-redux/lib/languages/xml'));
 
-helper.highlight = (str, language) => highlight(language, str).value;
+const helper = {};
+
+helper.highlight = function(str) {
+  const preNode = document.createElement('pre'),
+        textNode = document.createTextNode(str);
+
+  preNode.appendChild(textNode);
+
+  hljs.highlightBlock(preNode);
+  return preNode.innerHTML;
+};
 
 helper.renderTemplate = function(hash, datas) {
   const templates = datas.templates,
