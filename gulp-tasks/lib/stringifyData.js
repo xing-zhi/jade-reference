@@ -7,7 +7,7 @@ module.exports = function(dataArr) {
     return finalObj;
   }, {});
 
-  const module = `module.exports = ${JSON.stringify(obj)}`;
+  const module = JSON.stringify(obj);
 
   return module;
 };

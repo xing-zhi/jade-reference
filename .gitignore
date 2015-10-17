@@ -4,4 +4,5 @@ src/generated/
 .sass-cache/
 server/public/css/
 server/public/js/
+server/public/datas/
 src/js/.tern-port

@@ -37,7 +37,7 @@ const todosMap = new Map()
 
 function jades2Obj(dirname, destFile, todo) {
   const readdir = lib.readdir,
-        data2module = lib.data2module,
+        stringifyData = lib.stringifyData,
         writeFile = lib.writeFile;
 
   function processFiles(filenames) {
@@ -71,7 +71,7 @@ function jades2Obj(dirname, destFile, todo) {
 
   return readdir(dirname)
     .then(processFiles)
-    .then(data2module)
+    .then(stringifyData)
     .then(function stepWriteFile(data) {
       writeFile(destFile, data);
     })

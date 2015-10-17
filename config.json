@@ -45,7 +45,15 @@
     "htmlsObj": "src/generated/js/htmls.js",
     "templatesObj": "src/generated/js/templates.js",
     "includesObj": "src/generated/js/includes.js",
-    "layoutsObj": "src/generated/js/layouts.js"
+    "layoutsObj": "src/generated/js/layouts.js",
+    "clean": {
+      "src": ["server/public/datas/*.js", "server/public/datas/*.json", "src/generated/js/*.js", "src/generated/json/*.json"],
+      "ignore": ""
+    },
+    "copy": {
+      "src": ["src/generated/js/*.js", "src/generated/json/*.json"],
+      "dest": "server/public/datas/"
+    }
   },
   "concatJson": {
     "src": "src/jsons/",

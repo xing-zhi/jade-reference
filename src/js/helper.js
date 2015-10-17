@@ -52,4 +52,29 @@ helper.renderTemplate = function(hash, datas) {
   return html;
 };
 
+helper.ajax = function(url) {
+  return new Promise(function(resolve, reject) {
+    if ( localStorage.getItem(url) ) {
+      resolve(JSON.parse(localStorage.getItem(url)));
+    } else {
+      const xhr = new XMLHttpRequest();
+
+      xhr.open('GET', url);
+
+      xhr.addEventListener('load', function() {
+        if ( xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 ) {
+          localStorage.setItem(url, xhr.responseText);
+          resolve(JSON.parse(xhr.responseText));
+        }
+      });
+
+      xhr.addEventListener('error', function(e) {
+        reject(e);
+      });
+
+      xhr.send();
+    }
+  });
+};
+
 export default helper;

@@ -28,29 +28,31 @@ gulp.task('copyCss', getTask('copy', cfg.css.copy));
 gulp.task('cleanCss', getTask('clean', cfg.css.clean));
 gulp.task('cleanJs', getTask('clean', cfg.js.clean));
 gulp.task('copyJs', getTask('copy', cfg.js.copy));
+gulp.task('cleanData', getTask('clean', cfg.data.clean));
+gulp.task('copyData', getTask('copy', cfg.data.copy));
 
 gulp.task('browserify', getTask('browserify', cfg.browserify));
 
 // generate objects
 gulp.task('generateJadesObj', function() {
-  jades2Obj(cfg.data.jades, cfg.data.jadesObj, 'intact');
+  return jades2Obj(cfg.data.jades, cfg.data.jadesObj, 'intact');
 });
 gulp.task('generateHtmlsObj', function() {
-  jades2Obj(cfg.data.jades2render, cfg.data.htmlsObj, 'render');
+  return jades2Obj(cfg.data.jades2render, cfg.data.htmlsObj, 'render');
 });
 gulp.task('generateTemplatesObj', function() {
-   jades2Obj(cfg.data.templates, cfg.data.templatesObj, 'compile');
+  return jades2Obj(cfg.data.templates, cfg.data.templatesObj, 'compile');
 });
 gulp.task('generateLayoutsObj', function() {
-   jades2Obj(cfg.data.layouts, cfg.data.layoutsObj, 'intact');
+  return jades2Obj(cfg.data.layouts, cfg.data.layoutsObj, 'intact');
 });
 gulp.task('generateIncludesObj', function() {
-  files2obj(cfg.data.includes, cfg.data.includesObj);
+  return files2obj(cfg.data.includes, cfg.data.includesObj);
 });
 // \generate objects
 
 gulp.task('concatJson', function() {
-  concatJson(cfg.concatJson.src, cfg.concatJson.dest);
+  return concatJson(cfg.concatJson.src, cfg.concatJson.dest);
 });
 
 gulp.task('generateData', ['generateJadesObj', 'generateHtmlsObj', 'generateTemplatesObj', 'generateIncludesObj', 'generateLayoutsObj']);
@@ -63,7 +65,11 @@ gulp.task('build:js', function() {
   runSequence('cleanJs', 'concatJson', 'generateData', 'browserify', 'copyJs');
 });
 
-gulp.task('build', ['build:css', 'build:js']);
+gulp.task('build:data', function() {
+  runSequence('cleanData', 'concatJson', 'generateData', 'copyData');
+});
+
+gulp.task('build', ['build:css', 'build:js', 'build:data']);
 
 gulp.task('watch:css', ['build:css'], function() {
   $.livereload.listen();

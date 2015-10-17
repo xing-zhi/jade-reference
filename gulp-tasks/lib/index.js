@@ -1,11 +1,11 @@
 'use strict';
 
 const readdir = require('./readdir'),
-      data2module = require('./data2module'),
+      stringifyData = require('./stringifyData'),
       writeFile = require('./write-file');
 
 module.exports = {
   readdir,
-  data2module,
+  stringifyData,
   writeFile
 };

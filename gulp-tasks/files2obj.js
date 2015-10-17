@@ -7,7 +7,7 @@ const lib = require('./lib');
 
 function files2obj(dirname, destFile) {
   const readdir = lib.readdir,
-        data2module = lib.data2module,
+        stringifyData = lib.stringifyData,
         writeFile = lib.writeFile;
 
   function processFiles(filenames) {
@@ -34,7 +34,7 @@ function files2obj(dirname, destFile) {
 
   return readdir(dirname)
     .then(processFiles)
-    .then(data2module)
+    .then(stringifyData)
     .then(function stepWriteFile(data) {
       writeFile(destFile, data);
     })
