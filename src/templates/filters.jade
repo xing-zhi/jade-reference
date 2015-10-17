@@ -8,7 +8,8 @@ for syntaxItem in syntaxObj
         .box.jade
           pre= jades[section.code]
       .code-boxes
-        .box.html!= htmls[section.code]
+        .box.html
+          pre= htmls[section.code]
     .panel.panel-warning
       .panel-heading 警告
       for warning in section.warning

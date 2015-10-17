@@ -8,7 +8,8 @@ for syntaxItem in syntaxObj
           .box.jade(contentEditable='true')
             pre= jades[section.code]
         .code-boxes
-          .box.html!= htmls[section.code]
+          .box.html
+            pre= htmls[section.code]
       if section.danger
         .panel.panel-danger
           .panel-heading 危险提示

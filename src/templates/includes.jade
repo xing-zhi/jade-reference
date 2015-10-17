@@ -11,4 +11,5 @@ for syntaxItem in syntaxObj
           .box.jade
             pre= includes[code]
       .code-boxes
-        .box.html!= htmls[section.htmlcode]
+        .box.html
+          pre= htmls[section.htmlcode]
