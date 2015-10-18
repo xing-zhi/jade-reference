@@ -5,6 +5,8 @@ module.exports = function lint(gulp, $, js) {
     .src(js)
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
+    .pipe($.jshint.reporter('fail'))
     .pipe($.jscs())
-    .pipe($.jscsStylish());
+    .pipe($.jscsStylish())
+    .pipe($.jscs.reporter('fail'));
 };
