@@ -62,7 +62,7 @@ gulp.task('build:css', function() {
 });
 
 gulp.task('build:js', function() {
-  runSequence('cleanJs', 'concatJson', 'generateData', 'browserify', 'copyJs');
+  runSequence('cleanJs', 'browserify', 'copyJs');
 });
 
 gulp.task('build:data', function() {

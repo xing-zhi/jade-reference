@@ -4,7 +4,7 @@
     "lint": ["src/js/*.js", "gulp-tasks/files2obj.js", "gulp-tasks/jades2obj.js", "gulp-tasks/concat-json.js"],
     "build": ["src/jade-snippets/**/**", "src/templates/*.jade", "src/jade-descriptions/*.jade", "src/jsons/*.json", "src/js/*.js"],
     "clean": {
-      "src": ["src/generated/**/*.js", "src/generated/**/*.json", "build/js/*.js", "server/public/js/*.js"],
+      "src": ["build/js/*.js", "server/public/js/*.js"],
       "ignore": ""
     },
     "minifyJs": {
