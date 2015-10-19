@@ -35,7 +35,10 @@ helper.renderTemplate = function(hash, datas) {
     }
 
     const template = templates[templateName],
-          templateFunc = new Function(`return ${template}`)();    // jshint ignore: line
+          templateFunc = new Function(`return ${template}`)(),    // jshint ignore: line
+          jadeAll = window.jade;
+
+    window.jade = window.jade.runtime;    // set jade to the jade.runtime to run the compiled templates
 
     html = templateFunc({
       syntaxObj: JSON.parse(datas.references[hash]),
@@ -45,6 +48,8 @@ helper.renderTemplate = function(hash, datas) {
       layouts: datas.layouts,
       doctpe: 'html'
     });
+
+    window.jade = jadeAll;    // reset jade
 
     localStorage.setItem(`rendered-${hash}`, html);
   }

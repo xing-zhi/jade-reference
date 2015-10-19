@@ -1,7 +1,5 @@
 'use strict';
 
-import jade from 'jade';
-
 import router from './router';
 import helper from './helper';
 
@@ -48,7 +46,7 @@ window.addEventListener('DOMContentLoaded', function onLoad() {
     const target = e.target,
           text = target.textContent || target.innerText,
           htmlContainer = target.parentNode.parentNode.querySelector('.html'),
-          html = jade.render(text, {
+          html = window.jade.render(text, {
             pretty: true
           }).trim();
 
